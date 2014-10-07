@@ -10,7 +10,7 @@ class UniVariateLinearRegression(Base):
         self.w = [2]
         self.alpha = 0.001
         self.filename = 'univariate_data-train.csv'
-        self.returnCondition = 0.0000001
+        self.convergenceCondition = 0.0000001
 
     # def h(self):
     #     return 1.0 *
@@ -21,7 +21,7 @@ class UniVariateLinearRegression(Base):
 
     #     maxDistance = float('inf')
 
-    #     while maxDistance > self.returnCondition:    #convergence test
+    #     while maxDistance > self.convergenceCondition:    #convergence test
     #         for c in xrange(len(self.w)):
     #             w = self.w[c]
 
@@ -78,4 +78,5 @@ class UniVariateLinearRegression(Base):
         line = [uvlr.w[0]+uvlr.w[1]*myx for myx in linex]
         matplotlib.pyplot.plot(uvlr.x, line)
         matplotlib.pyplot.savefig('univariate.png')
+#         uvlr.printValues()
         return ws

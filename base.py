@@ -9,3 +9,13 @@ class Base(object):
                 splitUp = line.split(',')
                 self.y.append(float(splitUp[-1]))
                 self.x.append([float(val) for val in splitUp[0:-1]])
+
+    def printValues(self):
+        stri = ''
+        for c in xrange(len(self.y)):
+            for cc in xrange(len(self.x[c])):
+                stri += str(self.x[c][cc])
+                stri += ','
+            stri += str(self.y[c])
+            stri += '\n'
+        print stri
