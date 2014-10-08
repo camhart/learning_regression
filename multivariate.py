@@ -1,4 +1,4 @@
-import signal, math
+import signal, math, matplotlib.pyplot
 from base import Base
 
 class MultiVariateLinearRegression(Base):
@@ -50,7 +50,7 @@ class MultiVariateLinearRegression(Base):
                 if(abs(curW - self.w[i]) > self.convergenceCondition):
                     hasConverged = False
                 self.w[i] = curW
-            if(self.cc % 10000 == 0):
+            if(self.cc % 1000 == 0):
                 self.MSE()
             self.cc+=1
         print 'total iterations:',cc
@@ -70,10 +70,13 @@ def main():
     smvlr = MultiVariateLinearRegression()
 
     def handler(signum, frame):
-        print smvlr.w
+        matplotlib.pyplot.plot(smvlr.msex, smvlr.msey)
+        matplotlib.pyplot.ylim(0, 100000)
+        matplotlib.pyplot.ylabel("Mean Square Error")
+        matplotlib.pyplot.xlabel("Iterations")
+        matplotlib.pyplot.savefig('multivariate.png')
+        matplotlib.pyplot.clf()
         print 'iterations:',smvlr.cc
-        print 'msex', smvlr.msex
-        print 'msey', smvlr.msey
 
     print 'type ctrl+break or ctrl+pause to print current w and iteration count'
     # register ctrl+break to print values
