@@ -63,7 +63,7 @@ class MultiVariateLinearRegression(Base):
 
 smvlr = None
 
-def handler():
+def handler(signum, frame):
     print smvlr.w
 
 def main():
@@ -71,7 +71,7 @@ def main():
     print MultiVariateLinearRegression.run(smvlr)
     print 'done'
 
-signal.signal(signal.CTRL_C_EVENT, handler)  #windows only
+signal.signal(signal.signal.CTRL_C_EVENT, handler)  #windows only
 
 
 main()
