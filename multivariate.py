@@ -1,3 +1,4 @@
+import signal
 from base import Base
 
 class MultiVariateLinearRegression(Base):
@@ -48,8 +49,9 @@ class MultiVariateLinearRegression(Base):
         return self.w
 
     @classmethod
-    def run(cls):
-        mvlr = MultiVariateLinearRegression()
+    def run(cls, mvlr=None):
+        if(mvlr == None):
+            mvlr = MultiVariateLinearRegression()
         mvlr.loadCSVFile('multivariate_data-train.csv')
 #         mvlr.loadCSVFile('univariate_data-train.csv')
 #         mvlr.loadCSVFile('test1.csv')
@@ -59,8 +61,17 @@ class MultiVariateLinearRegression(Base):
         ws = mvlr.findLine()
         return ws
 
+smvlr = None
+
+def handler():
+    print smvlr.w
+
 def main():
-    print MultiVariateLinearRegression.run()
+    smvlr = MultiVariateLinearRegression()
+    print MultiVariateLinearRegression.run(smvlr)
     print 'done'
+
+signal.signal(signal.CTRL_C_EVENT, handler)  #windows only
+
 
 main()
