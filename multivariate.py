@@ -71,7 +71,7 @@ def main():
     print MultiVariateLinearRegression.run(smvlr)
     print 'done'
 
-signal.signal(0, handler)  #windows only
+signal.signal(signal.SIGINT, handler)  #windows only
 
 
 main()
