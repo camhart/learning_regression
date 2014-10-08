@@ -74,7 +74,7 @@ def main():
         matplotlib.pyplot.ylim(0, 100000)
         matplotlib.pyplot.ylabel("Mean Square Error")
         matplotlib.pyplot.xlabel("Iterations")
-        matplotlib.pyplot.savefig('multivariate.png')
+        matplotlib.pyplot.savefig("multivariate_%s.png" % (smvlr.filename, ))
         matplotlib.pyplot.clf()
         print 'iterations:',smvlr.cc
 

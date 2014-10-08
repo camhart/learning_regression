@@ -69,6 +69,7 @@ class UniVariateLinearRegression(Base):
     @classmethod
     def run(cls):
         uvlr = UniVariateLinearRegression()
+        uvlr.filename = 'univariate_data-test.csv'
         uvlr.loadCSVFile()
         uvlr.x = [item for sublist in uvlr.x for item in sublist]
         ws = uvlr.findLine()
@@ -77,6 +78,12 @@ class UniVariateLinearRegression(Base):
         linex.extend([0, max(uvlr.y)])
         line = [uvlr.w[0]+uvlr.w[1]*myx for myx in linex]
         matplotlib.pyplot.plot(uvlr.x, line)
-        matplotlib.pyplot.savefig('univariate.png')
+        matplotlib.pyplot.ylabel("y")
+        matplotlib.pyplot.xlabel("x")
+        matplotlib.pyplot.xlim(-1, 9)
+        matplotlib.pyplot.ylim(0, 15)
+        matplotlib.pyplot.savefig("univariate_%s.png" % (uvlr.filename, ))
 #         uvlr.printValues()
         return ws
+
+print UniVariateLinearRegression.run()
