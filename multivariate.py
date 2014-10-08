@@ -50,7 +50,7 @@ class MultiVariateLinearRegression(Base):
     @classmethod
     def run(cls):
         mvlr = MultiVariateLinearRegression()
-        mvlr.loadCSVFile('multivariate_data-test.csv')
+        mvlr.loadCSVFile('multivariate_data-train.csv')
 #         mvlr.loadCSVFile('univariate_data-train.csv')
 #         mvlr.loadCSVFile('test1.csv')
 #         mvlr.loadCSVFile('test.csv')
